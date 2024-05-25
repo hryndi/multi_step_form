@@ -53,6 +53,12 @@ const theme = createTheme({
     lightBg_200: "hsl(206, 94%, 87%)",
     lightBg_400: "hsl(228, 100%, 84%)",
   },
+  typography: {
+    fontFamily: "Ubuntu, sans-serif",
+    subtitle2: {
+      fontSize: "0.8rem",
+    },
+  },
 });
 
 const Main = () => {
