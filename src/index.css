@@ -23,6 +23,7 @@ body {
 }
 #root {
   min-height: 100svh;
+  font-family: "Ubuntu", sans-serif;
 }
 
 /*
