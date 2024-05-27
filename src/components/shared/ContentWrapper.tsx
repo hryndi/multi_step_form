@@ -4,6 +4,7 @@ import Navigation from "../Navigation";
 
 const SBox = styled(Box)(({ theme }) => ({
   background: theme.palette.common.white,
+  marginInline: "1rem",
 }));
 
 const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
@@ -11,6 +12,7 @@ const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
     <>
       <SBox component={"main"} padding={"1.5rem"} borderRadius={3}>
         {children}
+        {/* IsNavigation */}
       </SBox>
     </>
   );
