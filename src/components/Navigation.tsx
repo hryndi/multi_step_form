@@ -5,8 +5,11 @@ import { ContextAPI } from "../contextAPI/ContextProvider";
 import { useEffect } from "react";
 
 const Navigation = () => {
-  useEffect(() => console.log("navigator component re-render"));
+  // useEffect(() => console.log("navigator component re-render"));
   const nextPageHandler = useContextSelector(ContextAPI, (state) => state?.nextPageHandler);
+  const prevPageHandler = useContextSelector(ContextAPI, (state) => state?.prevPageHandler);
+  const isShowNextBtn = useContextSelector(ContextAPI, (state) => state?.isLastStep);
+  const isShowReturnBtn = useContextSelector(ContextAPI, (state) => state?.isFirstStep);
   return (
     <Stack
       direction={"row"}
@@ -23,9 +26,16 @@ const Navigation = () => {
         backgroundColor: "#fff",
       }}
     >
-      <Button variant={"contained"} onClick={() => nextPageHandler?.()}>
-        Next Step
-      </Button>
+      {isShowReturnBtn && (
+        <Button variant={"outlined"} onClick={() => prevPageHandler?.()}>
+          Go back
+        </Button>
+      )}
+      {isShowNextBtn && (
+        <Button variant={"contained"} onClick={nextPageHandler}>
+          Next Step
+        </Button>
+      )}
     </Stack>
   );
 };

@@ -7,9 +7,17 @@ export const ContextAPI = createContext<TContextAPI | null>(null);
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
-  const { email, name, phoneNum, setEmail, setName, setPhoneNum, nextPageHandler, prevPageHandler } =
+  const { inputConstructor, nextPageHandler, prevPageHandler, isFirstStep, isLastStep, isStepOneValid } =
     useMultistepForm(navigate);
-  const vals = { email, name, phoneNum, setEmail, setName, setPhoneNum, prevPageHandler, nextPageHandler };
+  const vals = {
+    inputConstructor,
+    prevPageHandler,
+    nextPageHandler,
+    isFirstStep,
+    isLastStep,
+    isStepOneValid,
+  };
+  console.log(isStepOneValid);
   return <ContextAPI.Provider value={vals}>{children}</ContextAPI.Provider>;
 };
 
