@@ -9,13 +9,19 @@ export type TStepperNavigationData = {
   title: string;
 };
 
-export type TContextAPI = {
+export type TContextAPI = TUseMultistepFormReturn & TUseStepTwoReturn;
+
+export type TUseMultistepFormReturn = {
   inputConstructor: TInputConstructor;
   prevPageHandler: () => void;
   nextPageHandler: () => void;
   isFirstStep: boolean;
   isLastStep: boolean;
   isStepOneValid: TStepOneErrors;
+};
+export type TUseStepTwoReturn = {
+  isYearly: boolean;
+  planHandler: () => void;
 };
 export type TFormValues = {
   name: string;
@@ -36,3 +42,15 @@ export type TInputConstructor = Array<
     helperText: string | undefined;
   }
 >;
+
+export type TPlanRadioMonthly = {
+  icon: string;
+  title: string;
+  subTitle: string;
+};
+export type TPlanRadioYearly = {
+  icon: string;
+  title: string;
+  subTitle: string;
+  discount: string;
+};

@@ -1,4 +1,9 @@
-import { TStepperNavigationData } from "../types";
+import { TStepperNavigationData, TPlanRadioMonthly, TPlanRadioYearly } from "../types";
+// IMAGES
+import ArcadeImg from "../assets/icon-arcade.svg";
+import AdvancedImg from "../assets/icon-advanced.svg";
+import ProImg from "../assets/icon-pro.svg";
+
 export const StepperNavigationData: TStepperNavigationData[] = [
   {
     id: "step1",
@@ -27,5 +32,44 @@ export const StepperNavigationData: TStepperNavigationData[] = [
     count: 4,
     name: "step 4",
     title: "Summary",
+  },
+];
+
+export const PlanRadioMonthly: TPlanRadioMonthly[] = [
+  {
+    icon: ArcadeImg,
+    title: "Arcade",
+    subTitle: "$9/yr",
+  },
+  {
+    icon: AdvancedImg,
+    title: "Advanced",
+    subTitle: "$12/yr",
+  },
+  {
+    icon: ProImg,
+    title: "PRO",
+    subTitle: "$15/yr",
+  },
+];
+
+export const PlanYearly: TPlanRadioYearly[] = [
+  {
+    icon: ArcadeImg,
+    title: "Arcade",
+    subTitle: "$90/yr",
+    discount: "2 month free",
+  },
+  {
+    icon: AdvancedImg,
+    title: "Advanced",
+    subTitle: "$120/yr",
+    discount: "2 month free",
+  },
+  {
+    icon: ProImg,
+    title: "PRO",
+    subTitle: "$150/yr",
+    discount: "2 month free",
   },
 ];

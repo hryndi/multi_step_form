@@ -1,11 +1,10 @@
-import React, { InputHTMLAttributes, useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { StepperNavigationData } from "../utils/data";
 import { NavigateFunction } from "react-router-dom";
-import { TContextAPI, TStepOneErrors, TFormValues, TInputConstructor } from "../types";
+import { TUseMultistepFormReturn, TStepOneErrors, TFormValues, TInputConstructor } from "../types";
 
-export const useMultistepForm = (navigate: NavigateFunction): TContextAPI => {
+export const useMultistepForm = (navigate: NavigateFunction): TUseMultistepFormReturn => {
   const [formValues, setFormValues] = useState<TFormValues>({ name: "", email: "", phoneNum: "" });
-  let updatedStepOneValidation: TStepOneErrors = { name: false, email: false, phoneNum: false };
 
   const [currentPageIndx, setCurrentPageIndx] = useState<number>(1);
   const [isStepOneValid, setIsStepOneValid] = useState<TStepOneErrors>({ name: false, email: false, phoneNum: false });
@@ -41,21 +40,14 @@ export const useMultistepForm = (navigate: NavigateFunction): TContextAPI => {
     testFunc(formValues.name, /^[a-zA-Z\s]{1,}$/, "name");
     testFunc(formValues.email, /^[a-zA-Z\s].*@.*$/, "email");
     testFunc(formValues.phoneNum, /^\+[0-9+]{8,}$/, "phoneNum");
+
     setIsStepOneValid((prevVal) => {
       console.log(isStepOneValid);
       if (!Object.values(prevVal).some(Boolean)) {
         console.log(isStepOneValid);
-        //   setIsStepOneValid(() => {
-        //     return updatedStepOneValidation
-        //   });
         nextPage();
         return { ...prevVal };
-      } else {
-        //   setIsStepOneValid(() => {
-        //     return updatedStepOneValidation;
-        //   });
-        return { ...prevVal };
-      }
+      } else return { ...prevVal };
     });
 
     console.log(isStepOneValid);
@@ -115,7 +107,6 @@ export const useMultistepForm = (navigate: NavigateFunction): TContextAPI => {
     [formValues, isStepOneValid]
   );
 
-  //   console.log(isStepOneValid);
   return {
     inputConstructor,
     nextPageHandler,
