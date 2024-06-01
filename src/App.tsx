@@ -49,7 +49,7 @@ const SContentGridItem = styledMui(Grid)(() => ({
 
     width: "100%",
     alignItems: "center",
-    height: "100%",
+    height: "calc(100% + 70px)",
     justifyContent: "space-between",
   },
 }));
