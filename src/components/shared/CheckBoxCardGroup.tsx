@@ -3,8 +3,8 @@ import {
   CardProps,
   FormControl,
   FormControlLabel,
-  Radio,
-  RadioGroup,
+  Checkbox,
+  FormGroup,
   RadioGroupProps,
   Stack,
   lighten,
@@ -15,10 +15,7 @@ import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import React, { useState } from "react";
 import { useTheme } from "@mui/material";
-import { PlanRadioMonthly, PlanYearly } from "../../utils/data";
-import { TPlanRadioYearly, TPlanRadioMonthly } from "../../types";
-
-//ContextAPI
+// ContextAPI
 import { ContextAPI } from "../../contextAPI/ContextProvider";
 import { useContextSelector } from "use-context-selector";
 
@@ -46,13 +43,22 @@ const STypography = styled(Typography, {
 
 type TStyledRadioCardItemProps = CardProps & {
   control?: React.ReactNode;
-  icon?: string;
+  onClickFunc?: () => void;
   selected?: boolean;
   disabled?: boolean;
   formValue?: string;
+  id?: string;
 };
 
-const RadioCardItem = ({ formValue, control, icon, selected, disabled, ...rest }: TStyledRadioCardItemProps) => {
+const RadioCardItem = ({
+  formValue,
+  id,
+  onClickFunc,
+  control,
+  selected,
+  disabled,
+  ...rest
+}: TStyledRadioCardItemProps) => {
   const theme = useTheme();
   const selectedStyles = {
     backgroundColor: selected ? lighten(theme.palette.primary.light, 0.92) : "inherit",
@@ -73,22 +79,9 @@ const RadioCardItem = ({ formValue, control, icon, selected, disabled, ...rest }
   return (
     <StyledRadioCardItem sx={styles} {...rest}>
       <Stack flexDirection={"row"} gap={2}>
-        <img style={{ maxWidth: 50, maxHeight: 50 }} src={icon} alt="" />
         <FormControlLabel
-          value={formValue}
-          disableTypography
-          sx={{ margin: 0, ...theme.typography.h6 }}
-          control={
-            <Radio
-              sx={{ opacity: 0, position: "absolute", width: 0, height: 0 }}
-              inputProps={{
-                style: {
-                  width: 0,
-                  height: 0,
-                },
-              }}
-            />
-          }
+          sx={{ margin: 0, ...theme.typography.h6, gap: 1, width: "100%" }}
+          control={<Checkbox checked={selected} onClick={onClickFunc} />}
           label={control}
         />
       </Stack>
@@ -97,43 +90,46 @@ const RadioCardItem = ({ formValue, control, icon, selected, disabled, ...rest }
 };
 
 export interface RadioCardGroupProps extends RadioGroupProps {
-  isYearly: boolean;
+  //   options: TPlanRadioYearly[] | TPlanRadioMonthly[];
+  defaultValue?: string;
 }
 
-function RadioCardGroup({ isYearly }: RadioCardGroupProps) {
-  const value = useContextSelector(ContextAPI, (v) => v?.radioValue);
-  const setValue = useContextSelector(ContextAPI, (v) => v?.setRadioValue);
-  const theme = useTheme();
+function CheckBoxCardGroup() {
+  const add_onsData = useContextSelector(ContextAPI, (v) => v?.add_onsData);
+  const add_onsHandler = useContextSelector(ContextAPI, (v) => v?.add_onsHandler);
+  //   const [value, setValue] = useState(defaultValue);
+  //   const theme = useTheme();
+
+  //   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //     setValue(event.target.value);
+  //   };
 
   return (
     <FormControl>
-      <RadioGroup aria-labelledby="TODO: Label by the title" name="controlled-radio-buttons-group">
+      <FormGroup>
         <Grid gap={1} container>
-          {(isYearly ? PlanYearly : PlanRadioMonthly).map((option) => (
+          {add_onsData?.map((option) => (
             <Grid xs={12} key={option.title} overflow={"hidden"} borderRadius={2.5}>
               <RadioCardItem
-                onClick={() => setValue?.(option.title)}
+                onClickFunc={() => add_onsHandler?.(option.id)}
+                // id={option.id}
                 formValue={option.title}
                 control={
-                  <Box display={"flex"} flexDirection={"column"}>
+                  <Box display={"flex"} flexDirection={"column"} sx={{ pointerEvents: "auto" }}>
                     <STypography variant="subtitle1">{option.title}</STypography>{" "}
                     <STypography variant="subtitle2" isSubTitle fontSize={"0.9rem"}>
                       {option.subTitle}
                     </STypography>
-                    {isYearly && (
-                      <span style={{ fontSize: "0.79rem", color: theme.palette.primary.main }}>2 month free</span>
-                    )}
                   </Box>
                 }
-                icon={option.icon}
-                selected={value === option.title}
+                selected={option.checked}
               />
             </Grid>
           ))}
         </Grid>
-      </RadioGroup>
+      </FormGroup>
     </FormControl>
   );
 }
 
-export default RadioCardGroup;
+export default CheckBoxCardGroup;

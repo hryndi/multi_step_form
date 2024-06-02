@@ -9,7 +9,7 @@ export type TStepperNavigationData = {
   title: string;
 };
 
-export type TContextAPI = TUseMultistepFormReturn & TUseStepTwoReturn;
+export type TContextAPI = TUseMultistepFormReturn & TUseStepTwoReturn & TUseStepThreeReturn;
 
 export type TUseMultistepFormReturn = {
   inputConstructor: TInputConstructor;
@@ -22,7 +22,15 @@ export type TUseMultistepFormReturn = {
 export type TUseStepTwoReturn = {
   isYearly: boolean;
   planHandler: () => void;
+  radioValue: string;
+  setRadioValue: React.Dispatch<React.SetStateAction<string>>;
 };
+
+export type TUseStepThreeReturn = {
+  add_onsData: TAdd_ons[];
+  add_onsHandler: (id: string) => void;
+};
+
 export type TFormValues = {
   name: string;
   email: string;
@@ -47,10 +55,21 @@ export type TPlanRadioMonthly = {
   icon: string;
   title: string;
   subTitle: string;
+  intPrice: number;
 };
 export type TPlanRadioYearly = {
   icon: string;
   title: string;
   subTitle: string;
   discount: string;
+  intPrice: number;
+};
+
+export type TAdd_ons = {
+  title: string;
+  subTitle: string;
+  price: string;
+  id: string;
+  checked: boolean;
+  intPrice: number;
 };
