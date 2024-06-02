@@ -40,7 +40,6 @@ const StepTwo = () => {
   const isYearly = useContextSelector(ContextAPI, (v) => v?.isYearly);
   const planHandler = useContextSelector(ContextAPI, (v) => v?.planHandler);
 
-  useEffect(() => console.log("step Two re-render"));
   const theme = useTheme();
   return (
     <ContentWrapper display={"flex"} flexDirection={"column"} gap={3}>
@@ -62,7 +61,7 @@ const StepTwo = () => {
         <Typography variant={"subtitle2"} color={theme.palette.primary.main} fontWeight={600} fontSize={"0.9rem"}>
           Monthly
         </Typography>
-        <AndroidSwitch onClick={planHandler} />
+        <AndroidSwitch defaultChecked={isYearly} onClick={planHandler} />
 
         <Typography variant={"subtitle2"} color={theme.palette.grey[500]} fontWeight={600} fontSize={"0.9rem"}>
           Yearly
