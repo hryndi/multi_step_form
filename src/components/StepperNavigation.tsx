@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { styled as styledMui } from "@mui/material/styles";
-import { StepperNavigationData } from "../utils/data";
 import { ContextAPI } from "../contextAPI/ContextProvider";
 import { useContextSelector } from "use-context-selector";
 

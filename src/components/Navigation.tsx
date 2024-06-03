@@ -2,7 +2,6 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useContextSelector } from "use-context-selector";
 import { ContextAPI } from "../contextAPI/ContextProvider";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {

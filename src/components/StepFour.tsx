@@ -9,7 +9,6 @@ import { ContextAPI } from "../contextAPI/ContextProvider";
 import { useContextSelector } from "use-context-selector";
 import { PlanRadioMonthly, PlanYearly } from "../utils/data";
 import { useTheme } from "@mui/material/styles";
-import { useEffect } from "react";
 
 const STypography = styled(Typography, {
   shouldForwardProp: (prop) => prop !== "isSubTitle",
