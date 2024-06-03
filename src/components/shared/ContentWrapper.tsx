@@ -1,6 +1,5 @@
 import Box, { BoxProps } from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import Navigation from "../Navigation";
 
 const SBox = styled(Box)(({ theme }) => ({
   background: theme.palette.common.white,

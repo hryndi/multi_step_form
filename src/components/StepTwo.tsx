@@ -1,6 +1,3 @@
-// react
-import { useEffect } from "react";
-
 // types
 
 //custom components

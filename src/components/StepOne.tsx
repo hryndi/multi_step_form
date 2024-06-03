@@ -9,7 +9,6 @@ import TextField from "@mui/material/TextField";
 import ContentWrapper from "./shared/ContentWrapper";
 import { StyledTypography } from "./shared/STypography";
 import { styled } from "@mui/material/styles";
-import { useEffect } from "react";
 
 const SInputField = styled(TextField)({
   "& .MuiInputBase-root": {
