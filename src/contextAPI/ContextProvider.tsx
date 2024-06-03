@@ -10,8 +10,17 @@ export const ContextAPI = createContext<TContextAPI | null>(null);
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
 
-  const { inputConstructor, nextPageHandler, prevPageHandler, isFirstStep, isLastStep, isStepOneValid } =
-    useMultistepForm(navigate);
+  const {
+    inputConstructor,
+    nextPageHandler,
+    prevPageHandler,
+    isFirstStep,
+    isLastStep,
+    isStepOneValid,
+    navigationActiv,
+    setNavigationActive,
+    stepperNavigationData,
+  } = useMultistepForm(navigate);
   const { isYearly, planHandler, radioValue, setRadioValue } = useStepTwo();
   const { add_onsData, add_onsHandler } = useStepThree();
 
@@ -28,6 +37,9 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     add_onsHandler,
     radioValue,
     setRadioValue,
+    navigationActiv,
+    setNavigationActive,
+    stepperNavigationData,
   };
   console.log(isStepOneValid);
   return <ContextAPI.Provider value={vals}>{children}</ContextAPI.Provider>;

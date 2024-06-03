@@ -18,6 +18,9 @@ export type TUseMultistepFormReturn = {
   isFirstStep: boolean;
   isLastStep: boolean;
   isStepOneValid: TStepOneErrors;
+  navigationActiv: boolean;
+  setNavigationActive: React.Dispatch<React.SetStateAction<boolean>>;
+  stepperNavigationData: TStepperNavigationData[];
 };
 export type TUseStepTwoReturn = {
   isYearly: boolean;

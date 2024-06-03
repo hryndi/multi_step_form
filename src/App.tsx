@@ -10,7 +10,7 @@ import DesktopStepBackground from "./assets/bg-sidebar-desktop.svg";
 import ContextProvider from "./contextAPI/ContextProvider.tsx";
 
 // router
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 
 // components
 import Navigation from "./components/Navigation";
@@ -18,11 +18,17 @@ import StepperNavigation from "./components/StepperNavigation";
 import { useEffect } from "react";
 
 const SBox = styledMui(Box)(({ theme }) => ({
-  height: "100svh",
+  // height: "",
   backgroundColor: theme.palette.grey[300],
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
+  height: "100svh",
+
+  "@media (min-width:600px)": {
+    justifyContent: "center",
+    alignItems: "center",
+  },
 }));
 
 const SStepBackgroundGridItem = styledMui(Grid)(() => ({
@@ -34,8 +40,11 @@ const SStepBackgroundGridItem = styledMui(Grid)(() => ({
     backgroundSize: "cover",
   },
   "@media (min-width:600px)": {
-    backgroundImage: MobileStepBackground,
+    height: "570px",
+    width: "280px",
+    backgroundImage: `url(${DesktopStepBackground})`,
     backgroundSize: "cover",
+    // height: "auto",
   },
 }));
 
@@ -46,10 +55,16 @@ const SContentGridItem = styledMui(Grid)(() => ({
     top: -70,
     flexDirection: "column",
     display: "flex",
-
+    justifyContent: "space-between",
     width: "100%",
-    alignItems: "center",
-    height: "calc(100% + 70px)",
+    // alignItems: "center",
+    height: "calc(100vh - 103px)",
+  },
+  "@media (min-width:682px)": {
+    // flexDirection: "row",
+    width: "630px",
+    display: "flex",
+    flexDirection: "column",
     justifyContent: "space-between",
   },
 }));
@@ -58,23 +73,22 @@ function App() {
   useEffect(() => console.log("App re-render"));
 
   return (
-    <SBox>
-      <Grid container justifyContent={"center"} alignContent={"space-between"}>
-        <SStepBackgroundGridItem item>
-          {/* <picture>
-            <source media="(min-width:600px)" srcSet={DesktopStepBackground} />
-            <img src={MobileStepBackground} alt="stepper background" />
-          </picture> */}
-          <StepperNavigation />
-        </SStepBackgroundGridItem>
-        <SContentGridItem item>
-          <ContextProvider>
-            <Outlet />
-            <Navigation />
-          </ContextProvider>
-        </SContentGridItem>
-      </Grid>
-    </SBox>
+    <ContextProvider>
+      <SBox>
+        <Box sx={{ "@media (min-width:600px)": { backgroundColor: "#fff", borderRadius: 5, padding: 2 } }}>
+          <Grid container justifyContent={"center"} sx={{ "@media (max-width:682px)": { height: "100vh" } }}>
+            <SStepBackgroundGridItem item>
+              <StepperNavigation />
+            </SStepBackgroundGridItem>
+
+            <SContentGridItem item gap={1}>
+              <Outlet />
+              <Navigation />
+            </SContentGridItem>
+          </Grid>
+        </Box>
+      </SBox>
+    </ContextProvider>
   );
 }
 

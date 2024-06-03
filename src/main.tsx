@@ -8,11 +8,12 @@ import StepOne from "./components/StepOne.tsx";
 import StepTwo from "./components/StepTwo.tsx";
 import StepThree from "./components/StepThree.tsx";
 import StepFour from "./components/StepFour.tsx";
+import ByerSuccess from "./components/ByerSuccess.tsx";
 
 //ContextAPI
 
 // Router DOM
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 
 // MUI
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -64,30 +65,43 @@ const theme = createTheme({
 });
 
 const Main = () => {
-  const router = createBrowserRouter([
-    {
-      path: "/multi_step_form/",
-      element: <App />,
-      children: [
-        {
-          path: "/multi_step_form/step_1",
-          element: <StepOne />,
-        },
-        {
-          path: "/multi_step_form/step_2",
-          element: <StepTwo />,
-        },
-        {
-          path: "/multi_step_form/step_3",
-          element: <StepThree />,
-        },
-        {
-          path: "/multi_step_form/step_4",
-          element: <StepFour />,
-        },
-      ],
-    },
-  ]);
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <App />,
+
+        children: [
+          {
+            path: "/",
+            element: <Navigate to="/step_1" />,
+          },
+
+          {
+            path: "/step_1",
+            element: <StepOne />,
+          },
+          {
+            path: "/step_2",
+            element: <StepTwo />,
+          },
+          {
+            path: "/step_3",
+            element: <StepThree />,
+          },
+          {
+            path: "/step_4",
+            element: <StepFour />,
+          },
+          {
+            path: "/byer_success",
+            element: <ByerSuccess />,
+          },
+        ],
+      },
+    ],
+    { basename: "/multi_step_form/" }
+  );
   return (
     <React.StrictMode>
       <ThemeProvider theme={theme}>

@@ -72,7 +72,15 @@ const RadioCardItem = ({ formValue, control, icon, selected, disabled, ...rest }
   }
   return (
     <StyledRadioCardItem sx={styles} {...rest}>
-      <Stack flexDirection={"row"} gap={2}>
+      <Stack
+        sx={{
+          flexDirection: "row",
+          "@media(min-width:600px)": {
+            flexDirection: "column",
+          },
+        }}
+        gap={2}
+      >
         <img style={{ maxWidth: 50, maxHeight: 50 }} src={icon} alt="" />
         <FormControlLabel
           value={formValue}
@@ -108,9 +116,18 @@ function RadioCardGroup({ isYearly }: RadioCardGroupProps) {
   return (
     <FormControl>
       <RadioGroup aria-labelledby="TODO: Label by the title" name="controlled-radio-buttons-group">
-        <Grid gap={1} container>
+        <Grid
+          gap={1}
+          container
+          display={"flex"}
+          sx={{
+            "@media(min-width:600px)": {
+              flexWrap: "nowrap",
+            },
+          }}
+        >
           {(isYearly ? PlanYearly : PlanRadioMonthly).map((option) => (
-            <Grid xs={12} key={option.title} overflow={"hidden"} borderRadius={2.5}>
+            <Grid xs={12} xl={3} key={option.title} overflow={"hidden"} borderRadius={2.5}>
               <RadioCardItem
                 onClick={() => setValue?.(option.title)}
                 formValue={option.title}
