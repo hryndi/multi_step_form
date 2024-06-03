@@ -10,7 +10,7 @@ import DesktopStepBackground from "./assets/bg-sidebar-desktop.svg";
 import ContextProvider from "./contextAPI/ContextProvider.tsx";
 
 // router
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 // components
 import Navigation from "./components/Navigation";
