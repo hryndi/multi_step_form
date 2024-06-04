@@ -22,8 +22,10 @@ const SUl = styled.ul`
 `;
 const SLi = styled.li`
   display: flex;
-  align-items: center;
   gap: 0.5rem;
+  @media (min-width: 682px) {
+    align-items: center;
+  }
 `;
 const SItemCount = styledMui("span", { shouldForwardProp: (prop) => prop !== "isActive" })<{
   isActive?: boolean;
