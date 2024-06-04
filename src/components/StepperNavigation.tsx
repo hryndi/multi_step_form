@@ -23,7 +23,7 @@ const SUl = styled.ul`
 const SLi = styled.li`
   display: flex;
   gap: 0.5rem;
-  @media (min-width: 682px) {
+@media all and (min-width: 680px) {
     align-items: center;
   }
 `;
