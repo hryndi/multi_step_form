@@ -3,14 +3,14 @@ import Box from "@mui/material/Box";
 import { styled as styledMui } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 // assets
-import MobileStepBackground from "./assets/bg-sidebar-mobile.svg";
-import DesktopStepBackground from "./assets/bg-sidebar-desktop.svg";
+import MobileStepBackground from "/bg-sidebar-mobile.svg";
+import DesktopStepBackground from "/bg-sidebar-desktop.svg";
 
 // contextAPI
 import ContextProvider from "./contextAPI/ContextProvider.tsx";
 
 // router
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 // components
 import Navigation from "./components/Navigation";
