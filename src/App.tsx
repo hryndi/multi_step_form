@@ -44,6 +44,7 @@ const SStepBackgroundGridItem = styledMui(Grid)(() => ({
     width: "280px",
     backgroundImage: `url(${DesktopStepBackground})`,
     backgroundSize: "cover",
+    borderRadius: 12,
     // height: "auto",
   },
 }));
