@@ -25,21 +25,21 @@ const SBox = styledMui(Box)(({ theme }) => ({
   flexDirection: "column",
   height: "100svh",
 
-  "@media (min-width:600px)": {
+  "@media (min-width:950px)": {
     justifyContent: "center",
     alignItems: "center",
   },
 }));
 
 const SStepBackgroundGridItem = styledMui(Grid)(() => ({
-  "@media (max-width:682px)": {
+  "@media (max-width:950px)": {
     backgroundPosition: "center",
     height: 173,
     width: "100%",
     backgroundImage: `url(${MobileStepBackground})`,
     backgroundSize: "cover",
   },
-  "@media (min-width:600px)": {
+  "@media (min-width:950px)": {
     height: "570px",
     width: "280px",
     backgroundImage: `url(${DesktopStepBackground})`,
@@ -50,7 +50,7 @@ const SStepBackgroundGridItem = styledMui(Grid)(() => ({
 }));
 
 const SContentGridItem = styledMui(Grid)(() => ({
-  "@media (max-width:682px)": {
+  "@media (max-width:950px)": {
     position: "relative",
     paddingTop: 0,
     top: -70,
@@ -61,7 +61,7 @@ const SContentGridItem = styledMui(Grid)(() => ({
     // alignItems: "center",
     height: "calc(100vh - 103px)",
   },
-  "@media (min-width:682px)": {
+  "@media (min-width:950px)": {
     // flexDirection: "row",
     width: "630px",
     display: "flex",
@@ -76,8 +76,8 @@ function App() {
   return (
     <ContextProvider>
       <SBox>
-        <Box sx={{ "@media (min-width:600px)": { backgroundColor: "#fff", borderRadius: 5, padding: 2 } }}>
-          <Grid container justifyContent={"center"} sx={{ "@media (max-width:682px)": { height: "100vh" } }}>
+        <Box sx={{ "@media (min-width:950px)": { backgroundColor: "#fff", borderRadius: 5, padding: 2 } }}>
+          <Grid container justifyContent={"center"} sx={{ "@media (max-width:950px)": { height: "100vh" } }}>
             <SStepBackgroundGridItem item>
               <StepperNavigation />
             </SStepBackgroundGridItem>
