@@ -93,7 +93,7 @@ export const useMultistepForm = (navigate: NavigateFunction): TUseMultistepFormR
           setFormValues((prevVal) => {
             return { ...prevVal, name: e.target.value };
           }),
-        helperText: isStepOneValid.name ? "please, dont use only letters and spaces in your name." : undefined,
+        helperText: isStepOneValid.name ? "please, input the correct name" : undefined,
       },
       {
         typography: "Email Address",
@@ -106,7 +106,7 @@ export const useMultistepForm = (navigate: NavigateFunction): TUseMultistepFormR
           setFormValues((prevVal) => {
             return { ...prevVal, email: e.target.value };
           }),
-        helperText: isStepOneValid.email ? "please, dont use only letters and spaces in your name." : undefined,
+        helperText: isStepOneValid.email ? "please, input  the correct email" : undefined,
       },
       {
         typography: "Phone Number",
@@ -119,7 +119,7 @@ export const useMultistepForm = (navigate: NavigateFunction): TUseMultistepFormR
           setFormValues((prevVal) => {
             return { ...prevVal, phoneNum: e.target.value };
           }),
-        helperText: isStepOneValid.phoneNum ? "please, dont use only letters and spaces in your name." : undefined,
+        helperText: isStepOneValid.phoneNum ? "please, input the correct phone number" : undefined,
       },
     ],
     [formValues, isStepOneValid]
