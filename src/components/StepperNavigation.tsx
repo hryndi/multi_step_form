@@ -11,7 +11,7 @@ const SUl = styled.ul`
   justify-content: center;
   gap: 0.88rem;
 
-  @media (min-width: 682px) {
+  @media (min-width: 950px) {
     flex-direction: column;
     height: auto;
 
@@ -23,7 +23,7 @@ const SUl = styled.ul`
 const SLi = styled.li`
   display: flex;
   gap: 0.5rem;
-@media all and (min-width: 680px) {
+  @media all and (min-width: 950px) {
     align-items: center;
   }
 `;
@@ -41,7 +41,7 @@ const SItemCount = styledMui("span", { shouldForwardProp: (prop) => prop !== "is
   color: isActive ? "black" : "white",
   fontSize: "0.93rem",
   backgroundColor: isActive ? theme.custom.lightBg_200 : undefined,
-  "@media (max-width: 682px)": {
+  "@media (max-width: 950px)": {
     marginTop: "2.2rem",
   },
   //   "@media (min-width: 682px)": {
@@ -51,7 +51,7 @@ const SItemCount = styledMui("span", { shouldForwardProp: (prop) => prop !== "is
 const SStepDetails = styled.div`
   display: flex;
   flex-direction: column;
-  @media (max-width: 682px) {
+  @media (max-width: 950px) {
     display: none;
   }
 `;
